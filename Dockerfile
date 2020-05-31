@@ -10,7 +10,7 @@ LABEL repository="https://github.com/jdmevo123/akamai-purge-action"
 LABEL homepage=""
 LABEL maintainer="Dale Lenard <dale_lenard@outlook.com>"
 
-RUN apk add --no-cache --virtual .build-deps g++ python3-dev libffi-dev openssl-dev git curl bash jq wget util-linux && \
+RUN apk add --no-cache --virtual .build-deps g++ python3-dev libffi-dev openssl-dev git curl bash jq wget util-linux py3-setuptools && \
     apk add --no-cache --update python3 && \
     if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
     if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
