@@ -14,5 +14,14 @@ RUN apk update && apk add --no-cache git bash python3 python3-dev wget jq openss
 RUN pip3 install --upgrade pip
 RUN pip3 install httpie-edgegrid
 
+#Write Edgerc File
+CMD touch ~/.edgerc
+RUN echo "[default]" >> .edgerc
+RUN echo "client_secret=$secret" >> .edgerc
+RUN echo "host=$host" >> .edgerc
+RUN echo "access_token=$access_token" >> .edgerc
+RUN echo "client_token=$client_token" >> .edgerc
+RUN echo $(ls -1 ~/.edgerc)
+
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
