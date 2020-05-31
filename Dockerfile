@@ -10,28 +10,12 @@ LABEL repository="https://github.com/jdmevo123/akamai-purge-action"
 LABEL homepage=""
 LABEL maintainer="Dale Lenard <dale_lenard@outlook.com>"
 
-RUN apk upgrade --no-cache \
-  && apk add --no-cache \
-    git \
-    bash \
-    openssl \
-    openssl-dev \
-    curl \
-    build-base \
-    libzmq3-dev \
-    #python3 \
-    #python3-dev \
-    python3-pip \
-    bash \
-    wget \
-    jq \
-    libffi \
-    libffi-dev \
-    util-linux \
-  && pip3 install  --upgrade pip \
-  && pip3 install --no-cache-dir httpie-edgegrid \
-  && rm -rf /var/cache/* \
-  && rm -rf /root/.cache/*
+RUN apk add --no-cache --virtual .build-deps g++ python3-dev libffi-dev openssl-dev git curl bash jq wget util-linux && \
+    apk add --no-cache --update python3 && \
+    if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
+    if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
+    pip3 install --upgrade pip setuptools
+RUN pip3 install httpie-edgegrid
 
 #Write Edgerc File
 CMD touch ~/.edgerc
