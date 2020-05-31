@@ -17,7 +17,8 @@ RUN apk upgrade --no-cache \
     build-base \
     python3 \
     python3-dev \
-    postgresql-dev \
+    libzmq3-dev \
+    python3-pip \
     bash \
     wget \
     jq \
