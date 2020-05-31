@@ -19,8 +19,8 @@ RUN apk upgrade --no-cache \
     curl \
     build-base \
     libzmq3-dev \
-    python3 \
-    python3-dev \
+    #python3 \
+    #python3-dev \
     python3-pip \
     bash \
     wget \
