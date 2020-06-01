@@ -23,7 +23,6 @@ uri = '/ccu/v3/delete/cpcode/%s' % os.getenv('INPUT_NETWORK')
 line_items = []
 line_items.append(os.getenv('INPUT_CP_CODE'))
 result = edge_session.post(
-        urljoin(api_baseurl, '%s' % uri),
-        headers={'Content-Type': 'application/json'}, data = json.dumps(line_items))
+        urljoin(api_baseurl, '%s' % uri), data=json.dumps(line_items))
 r = result.content
 print (r)
