@@ -1,5 +1,6 @@
 import requests
 import os
+import json
 from urlparse import urljoin
 from akamai.edgegrid import EdgeGridAuth, EdgeRc
 
