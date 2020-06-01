@@ -20,7 +20,7 @@ fi
 
 
 ######## Call the API and store the response for later. ########
-HTTP_RESPONSE=$(python /usr/bin/akamai.py "$i")
+HTTP_RESPONSE=$(python /usr/bin/akamai.py)
 
 ######## Poll for purge success ########
 #progressUri = $(echo "${HTTP_RESPONSE}" | jq -r '.progressUri')
