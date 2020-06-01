@@ -49,8 +49,8 @@ jobs:
         host: ${{ secrets.host }}
         access_token: ${{ secrets.access_token }}
         client_token: ${{ secrets.client_token }}
-        cp_code: ${{ secrets.cp_code }}
-        network: ${{ secrets.network }}
+        cp_code: ${{ secrets.INPUT_CP_CODE }}
+        network: ${{ secrets.NETWORK }}
       run: |
         python akamai.py
     #- name: Run a one-line script
