@@ -1,4 +1,5 @@
 import requests
+import os
 from akamai.edgegrid import EdgeGridAuth, EdgeRc
 
 #Setup API Client
