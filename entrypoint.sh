@@ -3,6 +3,8 @@
 set -e
 
 ######## Check for Environment parameters. ########
+echo ">>>> ENVIRONMENT VARIABLES"
+env
 echo "CP Code coming through"
 echo $cp_code
 # Check if cp codes is set.
