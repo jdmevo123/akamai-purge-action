@@ -3,6 +3,8 @@
 set -e
 
 ######## Check for Environment parameters. ########
+echo "CP Code coming through"
+echo $cp_code
 # Check if cp codes is set.
 if [ -z "$cp_code" ]; then
   echo "cp codes are not set. Quitting."
