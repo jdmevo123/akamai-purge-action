@@ -45,14 +45,14 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Clear Cache
       env:
-        secret: ${{ secrets.secret }}
+        secret: ${{ secrets.client_secret }}
         host: ${{ secrets.host }}
         access_token: ${{ secrets.access_token }}
         client_token: ${{ secrets.client_token }}
         cp_code: ${{ secrets.cp_code }}
         network: ${{ secrets.network }}
       run: |
-        akamai.py
+        ./akamai.py
     #- name: Run a one-line script
      # uses: jdmevo123/akamai-purge-action@master
       #env:
