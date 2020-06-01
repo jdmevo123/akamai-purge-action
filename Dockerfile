@@ -11,6 +11,6 @@ FROM python:latest
 #LABEL maintainer="Dale Lenard <dale_lenard@outlook.com>"
 
 # WORKDIR /usr/local/bin
-COPY akamai.py /usr/local/share/
-RUN chmod +x /usr/local/share/akamai.py
-CMD ["/usr/local/share/akamai.py", "-flag"]
+COPY akamai.py /github/workspace
+RUN chmod +x /github/workspace/akamai.py
+CMD ["/github/workspace/akamai.py", "-flag"]
