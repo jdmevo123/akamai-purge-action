@@ -13,6 +13,8 @@ edge_session.auth = EdgeGridAuth(
     access_token=os.getenv('INPUT_ACCESS_TOKEN')
 )
 api_baseurl = 'https://%s' % os.getenv('INPUT_HOST')
+print('-------------')
+print (api_baseurl)
 api_headers = {
     'Content-Type': 'application/json',
     'Accept': 'application / vnd.akamai.cps.enrollments.v4 + json'
