@@ -16,15 +16,23 @@ jobs:
   Clear-Cache:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.7]
+#     strategy:
+#       matrix:
+#         python-version: [3.7]
         #python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+     - name: Clear Cache
+       uses: jdmevo123/akamai-purge-action@master
+       env:
+         secret: ${{ secrets.CLIENT_SECRET }}
+         host: ${{ secrets.HOST }}
+         access_token: ${{ secrets.ACCESS_TOKEN }}
+         client_token: ${{ secrets.CCLIENT_TOKEN }}
+         cp_code: ${{ secrets.CP_CODE }}
+         network: ${{ secrets.NETWORK }}
       
 
 #     # Runs a single command using the runners shell
@@ -54,13 +62,5 @@ jobs:
 #         network: ${{ secrets.NETWORK }}
 #       run: |
 #         python akamai.py
-    - name: Clear Cache
-     uses: jdmevo123/akamai-purge-action@master
-      env:
-        secret: ${{ secrets.CLIENT_SECRET }}
-        host: ${{ secrets.HOST }}
-        access_token: ${{ secrets.ACCESS_TOKEN }}
-        client_token: ${{ secrets.CCLIENT_TOKEN }}
-        cp_code: ${{ secrets.CP_CODE }}
-        network: ${{ secrets.NETWORK }}
+   
 
