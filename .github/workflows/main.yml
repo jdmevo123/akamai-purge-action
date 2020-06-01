@@ -52,7 +52,7 @@ jobs:
         cp_code: ${{ secrets.cp_code }}
         network: ${{ secrets.network }}
       run: |
-        ./akamai.py
+        python akamai.py
     #- name: Run a one-line script
      # uses: jdmevo123/akamai-purge-action@master
       #env:
