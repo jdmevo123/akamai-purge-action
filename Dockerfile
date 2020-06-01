@@ -1,5 +1,5 @@
-#FROM python:latest
-FROM python:3-slim AS builder
+FROM python:3
+#FROM python:3-slim AS builder
 
 #LABEL "com.github.actions.name"="Akamai Purge Cache"
 #LABEL "com.github.actions.description"="Purge cache via the Akamai API"
@@ -11,12 +11,11 @@ FROM python:3-slim AS builder
 #LABEL homepage=""
 #LABEL maintainer="Dale Lenard <dale_lenard@outlook.com>"
 
-ADD . /app
-WORKDIR /app
-# We are installing a dependency here directly into our app source dir
-RUN pip install --target=/app -r requirements.txt
-FROM gcr.io/distroless/python3-debian10
-COPY --from=builder /app /app
-# WORKDIR /usr/local/bin
-ADD akamai.py /akamai.py
-CMD ["/akamai.py"]
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD [ "python", "./akamai.py" ]
