@@ -8,11 +8,11 @@ from akamai.edgegrid import EdgeGridAuth, EdgeRc
 #Setup API Client
 edge_session = requests.Session()
 edge_session.auth = EdgeGridAuth(
-    client_token=os.getenv('INPUT_CLIENT_TOKEN'),
-    client_secret=os.getenv('INPUT_CLIENT_SECRET'),
-    access_token=os.getenv('INPUT_ACCESS_TOKEN')
+    client_token=os.getenv('client_token'),
+    client_secret=os.getenv('secret'),
+    access_token=os.getenv('access_token')
 )
-api_baseurl = 'https://%s' % os.getenv('INPUT_HOST')
+api_baseurl = 'https://%s' % os.getenv('host')
 print('-------------')
 print (os.getenv('host'))
 api_headers = {
@@ -21,8 +21,8 @@ api_headers = {
 }
 
 #Make Request
-uri = '/ccu/v3/delete/cpcode/%s' % os.getenv('INPUT_NETWORK')
-data = {"objects": [970236]}
+uri = '/ccu/v3/delete/cpcode/%s' % os.getenv('network')
+data = {"objects": [os.getenv('cp_code')]}
 result = edge_session.post(
         urljoin(api_baseurl, '%s' % uri), json = data,headers={'Content-Type': 'application/json'})
 r = result.content
