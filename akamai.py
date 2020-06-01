@@ -22,6 +22,6 @@ api_headers = {
 uri = '/ccu/v3/delete/cpcode/%s' % os.getenv('INPUT_NETWORK')
 data = {'objects': [970236]}
 result = edge_session.post(
-        urljoin(api_baseurl, '%s' % uri), data = data)
+        urljoin(api_baseurl, '%s' % uri), data = json.dumps(data),headers={'Content-Type': 'application/json'})
 r = result.content
 print (r)
