@@ -12,5 +12,5 @@ FROM python:latest
 
 # WORKDIR /usr/local/bin
 COPY akamai.py /usr/local/share/
-
+RUN chmod +x /usr/local/share/akamai.py
 CMD ["/usr/local/share/akamai.py", "-flag"]
