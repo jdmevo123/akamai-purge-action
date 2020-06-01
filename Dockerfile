@@ -10,7 +10,7 @@ LABEL repository="https://github.com/jdmevo123/akamai-purge-action"
 LABEL homepage=""
 LABEL maintainer="Dale Lenard <dale_lenard@outlook.com>"
 
-WORKDIR /usr/local/bin
-COPY akamai.py ./akamai.py
+# WORKDIR /usr/local/bin
+COPY akamai.py /usr/local/share/
 
-CMD ["python","/akamai.py"]
+CMD ["akamai.py", "-flag"]
