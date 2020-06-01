@@ -33,9 +33,10 @@ HTTP_RESPONSE=$(python /usr/bin/akamai.py)
 ######## Format response for a pretty command line output. ########
 
 # Store result and HTTP status code separately to appropriately throw CI errors.
-HTTP_BODY=$(echo "${HTTP_RESPONSE}" | sed -E 's/HTTP_STATUS\:[0-9]{3}$//')
-HTTP_STATUS=$(echo "${HTTP_RESPONSE}" | tr -d '\n' | sed -E 's/.*HTTP_STATUS:([0-9]{3})$/\1/')
-
+HTTP_BODY=$(echo "${HTTP_RESPONSE}" | sed -E 's/httpStatus\:[0-9]{3}$//')
+HTTP_STATUS=$(echo "${HTTP_RESPONSE}" | tr -d '\n' | sed -E 's/.*httpStatus:([0-9]{3})$/\1/')
+echo "HTTP Status"
+echo "${HTTP_STATUS}"
 # Fail pipeline and print errors if API doesn't return an OK status.
 if [ "${HTTP_STATUS}" -eq "201" ]; then
   echo "Successfully purged!"
