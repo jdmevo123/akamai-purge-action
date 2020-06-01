@@ -20,4 +20,5 @@ COPY . .
 COPY akamai.py /usr/bin/akamai.py
 #ADD akamai.py /akamai.py
 ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
