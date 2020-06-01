@@ -45,11 +45,11 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Clear Cache
       env:
-        secret: ${{ secrets.client_secret }}
-        host: ${{ secrets.host }}
-        access_token: ${{ secrets.access_token }}
-        client_token: ${{ secrets.client_token }}
-        cp_code: ${{ secrets.INPUT_CP_CODE }}
+        secret: ${{ secrets.CLIENT_SECRET }}
+        host: ${{ secrets.HOST }}
+        access_token: ${{ secrets.ACCESS_TOKEN }}
+        client_token: ${{ secrets.CCLIENT_TOKEN }}
+        cp_code: ${{ secrets.CP_CODE }}
         network: ${{ secrets.NETWORK }}
       run: |
         python akamai.py
