@@ -17,5 +17,7 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
-ADD akamai.py /akamai.py
-CMD [ "python", "./akamai.py" ]
+COPY akamai.py /usr/bin/akamai.py
+#ADD akamai.py /akamai.py
+ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
