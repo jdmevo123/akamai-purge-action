@@ -10,7 +10,10 @@ if [ -z "$cp_code" ]; then
   echo "cp codes are not set. Quitting."
   exit 1
 fi
-
+if [ "$cp_code" != '970236' ]; then
+  echo "cp code is not 970236"
+  exit 1
+fi
 # # If URL array is passed, only purge those. Otherwise, purge everything.
 # if [ -n "$PURGE_URLS" ]; then
 #   set -- --data '{"files":'"${PURGE_URLS}"'}'
