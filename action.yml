@@ -1,0 +1,9 @@
+name: "Akamai Cache Purge"
+description: "Purge cache via Akamai API's"
+author: dalelenard
+runs:
+  using: docker
+  image: Dockerfile
+branding:
+  color: orange
+  icon: trash-2
