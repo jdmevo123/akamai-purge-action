@@ -1,6 +1,6 @@
 name: "Akamai Cache Purge"
 description: "Purge cache via Akamai API's"
-author: dalelenard
+author: jdmevo123
 runs:
   using: docker
   image: Dockerfile
