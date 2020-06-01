@@ -20,8 +20,8 @@ api_headers = {
 
 #Make Request
 uri = '/ccu/v3/delete/cpcode/%s' % os.getenv('INPUT_NETWORK')
-PARAMS = {'objects': [os.getenv('INPUT_CP_CODE')]}
+data = {'objects': [os.getenv('INPUT_CP_CODE')]}
 result = edge_session.post(
-        urljoin(api_baseurl, '%s' % uri), params=PARAMS)
+        urljoin(api_baseurl, '%s' % uri), data = data)
 r = result.content
 print (r)
