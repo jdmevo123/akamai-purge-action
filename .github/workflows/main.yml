@@ -16,7 +16,7 @@ jobs:
          secret: ${{ secrets.CLIENT_SECRET }}
          host: ${{ secrets.HOST }}
          access_token: ${{ secrets.ACCESS_TOKEN }}
-         client_token: ${{ secrets.CCLIENT_TOKEN }}
+         client_token: ${{ secrets.CLIENT_TOKEN }}
          cp_code: ${{ secrets.CP_CODE }}
          network: ${{ secrets.NETWORK }}
     # The type of runner that the job will run on
@@ -35,7 +35,7 @@ jobs:
          secret: ${{ secrets.CLIENT_SECRET }}
          host: ${{ secrets.HOST }}
          access_token: ${{ secrets.ACCESS_TOKEN }}
-         client_token: ${{ secrets.CCLIENT_TOKEN }}
+         client_token: ${{ secrets.CLIENT_TOKEN }}
          cp_code: ${{ secrets.CP_CODE }}
          network: ${{ secrets.NETWORK }}
        
