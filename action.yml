@@ -1,5 +1,5 @@
 name: "Akamai Cache Purge"
-description: "Purge cache via Akamai API's"
+description: "GitHub Action to Purge cache via Akamai API's"
 author: jdmevo123
 runs:
   using: docker
