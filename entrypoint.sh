@@ -3,50 +3,22 @@
 set -e
 
 ######## Check for Environment parameters. ########
-# Check if section is set.
-if [ -z "$section" ]; then
-  echo "section is not set. Quitting."
+# Check if cp codes is set.
+if [ -z "$cp_code" ]; then
+  echo "cp codes are not set. Quitting."
   exit 1
 fi
 
-# Check if domain is set.
-if [ -z "$domain" ]; then
-  echo "domain is not set. Quitting."
-  exit 1
-fi
-
-# Check if action is set.
-if [ -z "$action" ]; then
-  echo "action is not set. Quitting."
-  exit 1
-fi
-
-# Check if purge type is set.
-if [ -z "$purge_type" ]; then
-  echo "purge type is not set. Quitting."
-  exit 1
-fi
-
-# Check if objects is set.
-if [ -z "$objects" ]; then
-  echo "objects is not set. Quitting."
-  exit 1
-fi
-
-# If URL array is passed, only purge those. Otherwise, purge everything.
-if [ -n "$PURGE_URLS" ]; then
-  set -- --data '{"files":'"${PURGE_URLS}"'}'
-else
-  set -- --data '{"purge_everything":true}'
-fi
+# # If URL array is passed, only purge those. Otherwise, purge everything.
+# if [ -n "$PURGE_URLS" ]; then
+#   set -- --data '{"files":'"${PURGE_URLS}"'}'
+# else
+#   set -- --data '{"purge_everything":true}'
+# fi
 
 
 ######## Call the API and store the response for later. ########
-if [ "$API_METHOD" -eq 1 ]; then
-  HTTP_RESPONSE=$(http -a ${section}: POST :/ccu/v2/queues/default \
-                  objects:=${objects} \
-                  action=${action} type=${purge_type} domain=${domain})
-fi
+HTTP_RESPONSE=$(python /usr/bin/akamai.py "$i")
 
 ######## Poll for purge success ########
 #progressUri = $(echo "${HTTP_RESPONSE}" | jq -r '.progressUri')
