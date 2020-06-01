@@ -13,4 +13,4 @@ FROM python:latest
 # WORKDIR /usr/local/bin
 COPY akamai.py /usr/local/share/
 
-CMD ["akamai.py", "-flag"]
+CMD ["/usr/local/share/akamai.py", "-flag"]
