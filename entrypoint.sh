@@ -1,44 +1,32 @@
-#!/bin/sh
-
+#!/usr/bin/env bash
 set -e
+set -o pipefail
 
-######## Check for Environment parameters. ########
-echo ">>>> ENVIRONMENT VARIABLES"
-env
-echo "CP Code coming through"
-echo $cp_code
-# Check if cp codes is set.
-if [ -z "$cp_code" ]; then
-  echo "cp codes are not set. Quitting."
-  exit 1
-fi
-# # If URL array is passed, only purge those. Otherwise, purge everything.
-# if [ -n "$PURGE_URLS" ]; then
-#   set -- --data '{"files":'"${PURGE_URLS}"'}'
-# else
-#   set -- --data '{"purge_everything":true}'
-# fi
+_PURGE_TYPE=$1
+_PURGE_REF=$2
+_CLI_COMMAND=$3
 
+case ${_PURGE_TYPE} in
+  cpcode)
+    _CLI_OPT="--cpcode"
+  ;;
 
-######## Call the API and store the response for later. ########
-HTTP_RESPONSE=$(python /usr/bin/akamai.py)
+  tag)
+    _CLI_OPT="--tag"
+  ;;
 
-######## Poll for purge success ########
-#progressUri = $(echo "${HTTP_RESPONSE}" | jq -r '.progressUri')
+  *)
+    echo "Unknown ${_PURGE_TYPE} ... exiting"
+    exit 123
+  ;;
+esac
 
-######## Format response for a pretty command line output. ########
+# Create /root/.edgerc file from env variable
+echo -e "${EDGERC}" > /root/.edgerc
 
-# Store result and HTTP status code separately to appropriately throw CI errors.
-HTTP_BODY=$(echo "${HTTP_RESPONSE}")
-HTTP_STATUS=$(echo "${HTTP_RESPONSE}" | tr -d '\n' | sed -E 's/.*"httpStatus": ([0-9]*).*/\1/g')
-echo "HTTP Status"
-echo "${HTTP_STATUS}"
-# Fail pipeline and print errors if API doesn't return an OK status.
-if [ "${HTTP_STATUS}" -eq "201" ]; then
-  echo "Successfully purged!"
-  exit 0
-else
-  echo "Purge failed. API response was: "
-  echo "${HTTP_BODY}"
-  exit 1
-fi
+# Send purge request
+/usr/local/bin/akamai purge \
+  --edgerc /root/.edgerc \
+  --section ccu \
+  ${_CLI_COMMAND} \
+  ${_CLI_OPT} "${_PURGE_REF}"
