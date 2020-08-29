@@ -42,14 +42,14 @@ CPCode or Cache Tag to purge
 Place in a `.yml` file such as this one in your `.github/workflows` folder. [Refer to the documentation on workflow YAML syntax here.](https://help.github.com/en/articles/workflow-syntax-for-github-actions)
 
 ```yaml
-- Name: Purge Cache
-  uses: jdmevo123/akamai-purge-action
-  env:
-    EDGERC: ${{ secrets.EDGERC }}
-  with:
-    command: 'invalidate'
-    type: 'cpcode'
-    ref: '1234'
+- name: Clear Cache
+      uses: jdmevo123/akamai-purge-action@1.4
+      env:
+        EDGERC: ${{ secrets.EDGERC }}
+      with:
+        command: 'invalidate'
+        type: 'cpcode'
+        ref: '12345'
 ```
 ## License
 
