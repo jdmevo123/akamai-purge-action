@@ -14,8 +14,12 @@ inputs:
     description: 'Reference'
     required: true
 runs:
-  using: docker
-  image: Dockerfile
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.command}}
+    - ${{ inputs.type }}
+    - ${{ inputs.ref }}
 branding:
   color: orange
   icon: trash-2
