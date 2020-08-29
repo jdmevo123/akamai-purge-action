@@ -2,9 +2,10 @@
 set -e
 set -o pipefail
 
-_PURGE_TYPE=$1
-_PURGE_REF=$2
-_CLI_COMMAND=$3
+_CLI_COMMAND=$1
+_PURGE_TYPE=$2
+_PURGE_REF=$3
+
 
 case ${_PURGE_TYPE} in
   cpcode)
