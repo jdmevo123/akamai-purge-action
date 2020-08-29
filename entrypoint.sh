@@ -37,7 +37,7 @@ case ${_PURGE_NETWORK} in
   ;;
   
   both)
-    _NETWORK="--both"
+    _NETWORK=""
   ;;
   
   *)
