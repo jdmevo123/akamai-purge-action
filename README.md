@@ -40,10 +40,11 @@ Purge action you wish to run:
 Type of purge required:
 - cpcode : Purge by cpcode
 - tag : Purge by Cache Tag
+- url : Purge by url
 
 ### `ref`
 **Required** 
-CPCode or Cache Tag to purge
+CPCode, Cache Tag or url's to purge
 
 ## `workflow.yml` Example
 
@@ -55,9 +56,10 @@ Place in a `.yml` file such as this one in your `.github/workflows` folder. [Ref
       env:
         EDGERC: ${{ secrets.EDGERC }}
       with:
-        command: 'invalidate'
-        type: 'cpcode'
-        ref: '12345'
+        command: 'invalidate' 
+        type: 'cpcode' #valid inputs are 'cpcode', 'url' and 'tag'
+        ref: '12345' #input url's as 'https://www.example.com/ https://www.example1.com/'
+        network: 'production'
 ```
 ## License
 
