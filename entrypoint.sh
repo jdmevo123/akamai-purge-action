@@ -25,7 +25,7 @@ esac
 echo -e "${EDGERC}" > /root/.edgerc
 
 # Send purge request
-/usr/local/bin/akamai purge \
+akamai purge \
   --edgerc /root/.edgerc \
   --section ccu \
   ${_CLI_COMMAND} \
