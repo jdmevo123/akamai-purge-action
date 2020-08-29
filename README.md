@@ -1,4 +1,12 @@
-# GitHub Action to Purge Akamai Cache  🗑️ 
+<p align="center">
+  <img alt="Akamai logo" src="https://www.akamai.com/us/en/multimedia/images/logo/akamai-logo.png"/>
+  <h3 align="center">GitHub Action to Purge Akamai Cache 🗑️</h3>
+  <p align="center">
+    <img alt="GitHub license" src="https://badgen.net/github/license/jdmevo123/akamai-purge-action?cache=300&color=green"/>
+  </p>
+</p>
+
+# Purge Akamai Cache   
 
 This simple action calls the Akamai Api's to purge the cache of your website, which assists in clearing the cache after deploying a new application version.
 
