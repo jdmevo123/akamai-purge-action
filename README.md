@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Akamai logo" src="https://www.akamai.com/us/en/multimedia/images/logo/akamai-logo.png"/>
+  <img alt="Akamai logo" src="https://yt3.ggpht.com/a/AATXAJxgjeXK9o1go60ArLNnWcArRSoGHMpxBxILQhQwmw=s68-c-k-c0x00ffffff-no-rj"/>
   <h3 align="center">GitHub Action to Purge Akamai Cache 🗑️</h3>
   <p align="center">
     <img alt="GitHub license" src="https://badgen.net/github/license/jdmevo123/akamai-purge-action?cache=300&color=green"/>
